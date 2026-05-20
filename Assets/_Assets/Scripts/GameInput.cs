@@ -13,18 +13,18 @@ public class GameInput : MonoBehaviour
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
-        playerInputActions.Player.Enable();//µ÷ÓÃĞÂÊäÈëÏµÍ³
+        playerInputActions.Player.Enable();// å¯ç”¨ç©å®¶è¾“å…¥ç³»ç»Ÿ
 
         playerInputActions.Player.Interact.performed += Interact_performed;
         playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
 
-    }
 
+    }
     private void InteractAlternate_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
-    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)//»Øµ÷ÉÏÏÂÎÄ£¨°üº¬ÊäÈëÊÂ¼şµÄÏêÏ¸ĞÅÏ¢£©
+    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)// å›è°ƒå‚æ•°åŒ…å«æœ¬æ¬¡è¾“å…¥äº‹ä»¶çš„è¯¦ç»†ä¿¡æ¯
     {
         OnInteractAction?.Invoke(this,EventArgs.Empty);
     }
