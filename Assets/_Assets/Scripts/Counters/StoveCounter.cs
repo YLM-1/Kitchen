@@ -120,14 +120,33 @@ public class StoveCounter : BaseCounter,IHasprogress
             }
             else
             {
-                //TODO: 玩家没拿任何东西
+                
             }
         }
         else
         {
             if (player.HasKitchenObject())
             {
+                 //鐜╁鎵嬮噷鎷跨潃鐩樺瓙
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                {
+                    if(plateKitchenObject.TrtAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        // Debug.Log("鎷胯捣");
+                        GetKitchenObject().DestroySelf();
+                        
+                        state = E_State.Idle;
 
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                          state = state
+                        });
+                    }
+                    else
+                    {
+                        
+                    }
+                }
             }
             else
             {

@@ -23,13 +23,26 @@ public class CuttingCounter : BaseCounter,IHasprogress
             }
             else
             {
-                //TODO: 玩家没拿任何东西
+               
             }
         }
         else
         {
             if (player.HasKitchenObject())
             {
+                 //鐜╁鎵嬮噷鎷跨潃鐩樺瓙
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                {
+                    if(plateKitchenObject.TrtAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        // Debug.Log("鎷胯捣");
+                        GetKitchenObject().DestroySelf();
+                    }
+                    else
+                    {
+                        
+                    }
+                }
 
             }
             else
@@ -43,7 +56,7 @@ public class CuttingCounter : BaseCounter,IHasprogress
     {
         if (HasKitchenObject() && HasRecupeWithInput(GetKitchenObject().GetKitchenObjectSO()))
         {
-            //TODO: 切割东西
+            //TODO: 锟叫割东锟斤拷
             _cuttingProgress++;
             OnCut?.Invoke(this, EventArgs.Empty);
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
