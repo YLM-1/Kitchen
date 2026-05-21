@@ -38,10 +38,6 @@ public class CuttingCounter : BaseCounter,IHasprogress
                         // Debug.Log("拿起");
                         GetKitchenObject().DestroySelf();
                     }
-                    else
-                    {
-                        
-                    }
                 }
 
             }
@@ -56,7 +52,6 @@ public class CuttingCounter : BaseCounter,IHasprogress
     {
         if (HasKitchenObject() && HasRecupeWithInput(GetKitchenObject().GetKitchenObjectSO()))
         {
-            //TODO: �и��
             _cuttingProgress++;
             OnCut?.Invoke(this, EventArgs.Empty);
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
