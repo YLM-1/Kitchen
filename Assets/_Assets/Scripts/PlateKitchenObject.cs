@@ -19,7 +19,7 @@ public class PlateKitchenObject : KitchenObject
         kitchenObjectSOList= new List<KitchenObjectSO>();
     }
 
-    public bool TrtAddIngredient(KitchenObjectSO kitchenObjectSO)
+    public bool TryAddIngredient(KitchenObjectSO kitchenObjectSO)
     {
         if (!validKitchenObjectSOList.Contains(kitchenObjectSO))
         {
@@ -39,5 +39,10 @@ public class PlateKitchenObject : KitchenObject
             return true;
         }
         
+    }
+
+    public List<KitchenObjectSO> GetKitchenObjectSOList()
+    {
+        return kitchenObjectSOList;
     }
 }

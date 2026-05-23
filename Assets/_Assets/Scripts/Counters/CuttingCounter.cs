@@ -33,7 +33,7 @@ public class CuttingCounter : BaseCounter,IHasprogress
                  //玩家手里拿着盘子
                 if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
                 {
-                    if(plateKitchenObject.TrtAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    if(plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
                     {
                         // Debug.Log("拿起");
                         GetKitchenObject().DestroySelf();

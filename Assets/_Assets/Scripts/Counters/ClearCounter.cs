@@ -30,7 +30,7 @@ public class ClearCounter : BaseCounter
                 //玩家手里拿着盘子
                 if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
                 {
-                    if(plateKitchenObject.TrtAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    if(plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
                     {
                         // Debug.Log("拿起");
                         GetKitchenObject().DestroySelf();
@@ -41,7 +41,7 @@ public class ClearCounter : BaseCounter
                     //Player is not carrying Plate bute something else
                     if(GetKitchenObject().TryGetPlate(out plateKitchenObject))
                     {
-                        if (plateKitchenObject.TrtAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
+                        if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
                         {
                             player.GetKitchenObject().DestroySelf();
                         }

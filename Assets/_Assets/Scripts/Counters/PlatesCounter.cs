@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PlatesCounter :BaseCounter
 {
-    public event EventHandler OnPlateSpawned;
-    public event EventHandler OnPlateRemoved;
+    public event EventHandler OnPlateSpawned;//生成一个盘子
+    public event EventHandler OnPlateRemoved;//拿走一个盘子
 
     [SerializeField] private KitchenObjectSO plateKitchenObjectSO;
 
-    private float spawnPlateTimer;
+    private float spawnPlateTimer=0f;
     private float spawnPlateTimerMax = 4f;
     private int platesSpawnedAmout=0;
     private int platesSpawnedAmoutMax=4;
