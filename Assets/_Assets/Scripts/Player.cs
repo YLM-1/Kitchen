@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour,IKitchenObjecrParent
 {
 
-    public static Player Instance { get; private set; }//µ¥ÀıÄ£Ê½
+    public static Player Instance { get; private set; }//æ¡ˆä¾‹æ¨¡å¼
 
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour,IKitchenObjecrParent
                 SetSelectedCounter(null);
             }
             //ClearCounter clearCounter = raycastHit.transform.GetComponent<ClearCounter>();
-            ////raycastHit ±¾ÉíÒÑ¾­°üº¬ÁË»÷ÖĞµãµÄËùÓĞĞÅÏ¢£¬µ« GetComponent ·½·¨Ö»ÄÜ¹ÒÔÚ GameObject »ò Component ÉÏµ÷ÓÃ¡£
+            ////raycastHit ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ GetComponent ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ü¹ï¿½ï¿½ï¿½ GameObject ï¿½ï¿½ Component ï¿½Ïµï¿½ï¿½Ã¡ï¿½
             //if (clearCounter != null)
             //{
 
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour,IKitchenObjecrParent
         float playerRadius = 0.7f;
         float moveDistance = moveSpeed * Time.deltaTime;
 
-        //Åö×²Ìå¼ì²â
+        //ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
         if (!canMove)

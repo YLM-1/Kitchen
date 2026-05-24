@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DeliveryManager : MonoBehaviour
 {
+
+    public event EventHandler OnRecipeSpawned;
+    public event EventHandler OnRecipeCompleted;
+
     public static DeliveryManager instance{get;private set;}
     [SerializeField] private RecipeListSO recipeListSO;
     private List<RecipeSO> waitingRecipeSOList;
@@ -26,9 +31,11 @@ public class DeliveryManager : MonoBehaviour
 
             if(waitingRecipeSOList.Count<waitingRecipesMax)
             {
-                 RecipeSO waitingRecipeSO=recipeListSO.recipeSOList[Random.Range(0,recipeListSO.recipeSOList.Count)];
+                 RecipeSO waitingRecipeSO=recipeListSO.recipeSOList[UnityEngine.Random.Range(0,recipeListSO.recipeSOList.Count)];
                  Debug.Log(waitingRecipeSO.recipeName);
                  waitingRecipeSOList.Add(waitingRecipeSO);
+
+                 OnRecipeSpawned?.Invoke(this,EventArgs.Empty);
             }
         }
     }
@@ -65,8 +72,10 @@ public class DeliveryManager : MonoBehaviour
                 if (plateContentsMatchesRecipe)
                 {
                     //玩家交付正确食谱
-                    Debug.Log("交付正确食谱");
+                    // Debug.Log("交付正确食谱");
                     waitingRecipeSOList.RemoveAt(i);
+
+                    OnRecipeCompleted?.Invoke(this,EventArgs.Empty);
                     return;
                 }
             }
@@ -75,4 +84,9 @@ public class DeliveryManager : MonoBehaviour
         Debug.Log("交付错误食谱");
     }
 
+    public List<RecipeSO> GetWaitingRecipeSOList()
+    {
+        return waitingRecipeSOList;
+    }
 }
+

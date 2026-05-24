@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions playerInputActions;
-
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractAlternateAction;
     private void Awake()
