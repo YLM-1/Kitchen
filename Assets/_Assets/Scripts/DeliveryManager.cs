@@ -11,7 +11,7 @@ public class DeliveryManager : MonoBehaviour
     public event EventHandler OnRecipeSuccess;
     public event EventHandler OnRecipeFailed;
 
-    public static DeliveryManager instance{get;private set;}
+    public static DeliveryManager Instance{get;private set;}
     [SerializeField] private RecipeListSO recipeListSO;
     private List<RecipeSO> waitingRecipeSOList;
     private float spawnRecipeTimer;
@@ -21,7 +21,7 @@ public class DeliveryManager : MonoBehaviour
 
     private void Awake()
     {
-        instance=this;
+        Instance=this;
         waitingRecipeSOList=new List<RecipeSO>(); 
     }
 
@@ -32,7 +32,7 @@ public class DeliveryManager : MonoBehaviour
         {
             spawnRecipeTimer=spawnRecipeTimerMax;
 
-            if(waitingRecipeSOList.Count<waitingRecipesMax)
+            if(KitchenGameManager.Instance.IsGamePlaying()&&waitingRecipeSOList.Count<waitingRecipesMax)
             {
                  RecipeSO waitingRecipeSO=recipeListSO.recipeSOList[UnityEngine.Random.Range(0,recipeListSO.recipeSOList.Count)];
                 //  Debug.Log(waitingRecipeSO.recipeName);

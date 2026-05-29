@@ -9,7 +9,7 @@ public class GameOver : MonoBehaviour
 
     private void Start()
     {
-        KitchenGameManager.Instance.OnStateChange+=KitchenGameManager_OnStateChange;
+        KitchenGameManager.Instance.OnStateChanged+=KitchenGameManager_OnStateChange;
 
         Hide();
     }
@@ -19,7 +19,7 @@ public class GameOver : MonoBehaviour
         if(KitchenGameManager.Instance.IsGameOver())
         {
             Show();
-             recipesDeliveredText.text=DeliveryManager.instance.GetSuccessfulRecipesAmount().ToString();
+             recipesDeliveredText.text=DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
         }
         else
         {

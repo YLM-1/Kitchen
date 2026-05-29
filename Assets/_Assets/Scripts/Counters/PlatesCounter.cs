@@ -22,7 +22,7 @@ public class PlatesCounter :BaseCounter
         {
             spawnPlateTimer = 0f;
 
-            if (platesSpawnedAmout < platesSpawnedAmoutMax)
+            if (KitchenGameManager.Instance.IsGamePlaying()&&platesSpawnedAmout < platesSpawnedAmoutMax)
             {
                 platesSpawnedAmout++;
                 OnPlateSpawned?.Invoke(this, EventArgs.Empty);
